@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "HelveticaNeueLTArabic";
+  src: url("/fonts/helveticaneueltarabicroman1.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navLinks a {
+    @apply hover:text-gray-300 duration-200 transition-colors font-semibold;
+  }
+}
