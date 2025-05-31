@@ -12,6 +12,6 @@
 
 @layer components {
   .navLinks a {
-    @apply hover:text-gray-300 duration-200 transition-colors font-semibold;
+    @apply hover:text-[#ffbf00] duration-200 transition-colors font-semibold;
   }
 }

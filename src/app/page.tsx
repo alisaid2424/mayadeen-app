@@ -1,12 +1,12 @@
 import Hero from "./components/Hero";
-import RaceCalendar from "./components/RaceCalendar";
+import RaceCalendarWrapper from "./components/RaceCalendarWrapper/RaceCalendarWrapper";
 import RacePerformanceCard from "./components/RacePerformanceCard";
 
 const HomePage = () => {
   return (
     <>
       <Hero />
-      <RaceCalendar />
+      <RaceCalendarWrapper />
       <RacePerformanceCard />
     </>
   );

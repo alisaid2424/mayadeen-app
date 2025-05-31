@@ -24,7 +24,13 @@ const NavBar = () => {
           href={link.href}
           className="text-base block"
         >
-          {link.title}
+          {link.title === "المسابقات" ? (
+            <span>
+              <span className="text-yellow-400">+</span> المسابقات
+            </span>
+          ) : (
+            link.title
+          )}
         </Link>
       </li>
     ));
