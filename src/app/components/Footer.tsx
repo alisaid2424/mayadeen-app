@@ -9,18 +9,18 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-end space-y-3 basis-1/3 ">
           <h3 className="text-lg font-semibold">النشرة البريدية</h3>
           <p className="text-sm text-gray-400">النص أو الوصف يكتب هنا</p>
-          <form className="flex gap-2 w-full max-w-sm">
+          <form className="flex flex-col sm:flex-row gap-2 w-full max-w-sm">
+            <input
+              type="email"
+              placeholder="name@domain.com"
+              className="w-full px-4 py-2 text-black rounded-md focus:outline-none"
+            />
             <button
               type="submit"
               className="bg-green-600 text-white px-4 py-2 rounded-md"
             >
               اشترك
             </button>
-            <input
-              type="email"
-              placeholder="name@domain.com"
-              className="w-full px-4 py-2 text-black rounded-md focus:outline-none"
-            />
           </form>
         </div>
 
@@ -73,19 +73,19 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div className="flex justify-between items-center sm:w-2/3 space-x-3">
-            <Link href="#" className="hover:text-gray-300 text-base lg:text-xl">
+            <Link href="#" className="hover:text-gray-300 text-sm lg:text-xl">
               عن ميادين
             </Link>
-            <Link href="#" className="hover:text-gray-300 text-base lg:text-xl">
+            <Link href="#" className="hover:text-gray-300 text-sm lg:text-xl">
               الخدمات
             </Link>
-            <Link href="#" className="hover:text-gray-300 text-base lg:text-xl">
+            <Link href="#" className="hover:text-gray-300 text-sm lg:text-xl">
               المسابقات
             </Link>
-            <Link href="#" className="hover:text-gray-300 text-base lg:text-xl">
+            <Link href="#" className="hover:text-gray-300 text-sm lg:text-xl">
               البث المباشر
             </Link>
-            <Link href="#" className="hover:text-gray-300 text-base lg:text-xl">
+            <Link href="#" className="hover:text-gray-300 text-sm lg:text-xl">
               اتصل بنا
             </Link>
           </div>

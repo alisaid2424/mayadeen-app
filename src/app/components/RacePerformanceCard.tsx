@@ -159,7 +159,7 @@ const RacePerformanceCard = () => {
           <div className="text-primary font-bold whitespace-nowrap text-[34px] text-right mb-3">
             {race.daysAgo}
           </div>
-          <div className="flex justify-between items-center border rounded-md md:rounded-full flex-wrap gap-2 md:gap-5 px-10 py-4 shadow-sm bg-[#F2F2F2]">
+          <div className="flex flex-col-reverse  sm:flex-row justify-between items-center  border rounded-md md:rounded-full flex-wrap gap-3 md:gap-4 px-10 py-4 shadow-sm bg-[#F2F2F2]">
             {/* Info text (3 lines) */}
             <div className="flex flex-col text-sm text-gray-600 space-y-1">
               {race.infoLines.map((line, i) => (
@@ -188,7 +188,7 @@ const RacePerformanceCard = () => {
             </div>
 
             {/* Two-line metrics section with Arabic RTL support */}
-            <div className="flex flex-col gap-1 text-sm text-gray-800 max-w-60 text-center">
+            <div className="flex flex-col gap-1 text-sm text-gray-800 text-center">
               {/* First Row */}
               <div className="flex justify-between gap-2 flex-wrap ">
                 {race.values.slice(0, 6).map((val, i, arr) => (
@@ -196,7 +196,7 @@ const RacePerformanceCard = () => {
                     key={`top-${i}`}
                     className={`whitespace-nowrap min-w-[32px] ${
                       i === arr.length - 1
-                        ? "bg-white rounded-full text-black p-2"
+                        ? "bg-white w-7 h-7 leading-7 rounded-full text-black "
                         : ""
                     }`}
                   >
@@ -206,12 +206,12 @@ const RacePerformanceCard = () => {
               </div>
               {/* Second Row */}
               <div className="flex justify-between gap-2 flex-wrap">
-                {race.values.slice(7, 12).map((val, i, arr) => (
+                {race.values.slice(6, 12).map((val, i, arr) => (
                   <div
                     key={`bottom-left-${i}`}
                     className={`whitespace-nowrap min-w-[32px] ${
                       i === arr.length - 1
-                        ? "bg-white rounded-full text-black p-2"
+                        ? "bg-white w-7 h-7 leading-7 rounded-full text-black"
                         : ""
                     }`}
                   >

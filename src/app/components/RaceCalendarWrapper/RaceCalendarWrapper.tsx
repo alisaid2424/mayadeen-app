@@ -1,26 +1,33 @@
 import RaceCalendar from "./RaceCalendar";
 
 const RaceCalendarWrapper = async () => {
-  const dates = [
-    { day: 23, name: "الأحد" },
-    { day: 24, name: "الاثنين" },
-    { day: 25, name: "الثلاثاء" },
-    { day: 26, name: "الأربعاء" },
-    { day: 27, name: "الخميس" },
-    { day: 28, name: "الجمعة" },
-    { day: 29, name: "السبت" },
-    { day: 30, name: "الأحد" },
-    { day: 1, name: "الاثنين" },
-  ];
+  const today = new Date();
 
-  const races = [
-    { day: 23, type: "regular" },
-    { day: 26, type: "regular" },
-    { day: 28, type: ["regular", "featured", "special"] },
-    { day: 1, type: "regular" },
-  ];
+  return (
+    <div className="container pt-14">
+      <h1
+        dir="rtl"
+        className="text-4xl sm:text-[61px] mb-8 text-primary font-bold ml-auto w-fit flex items-center gap-2"
+      >
+        رزنامة السباقات
+        <span className="mb-6">
+          <svg
+            className="rotate-180 size-5 mt-2"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </span>
+      </h1>
 
-  return <RaceCalendar dates={dates} races={races} />;
+      <RaceCalendar startDate={today.toISOString()} />
+    </div>
+  );
 };
 
 export default RaceCalendarWrapper;

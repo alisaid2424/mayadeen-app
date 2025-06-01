@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Hero = () => {
   const boxes = [
@@ -50,17 +49,17 @@ const Hero = () => {
           اذهب الى
         </Link>
 
-        <div className="w-full text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-14">
+        <div className="w-full text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-20">
           {boxes.map((item) => {
             return (
               <div
-                className="bg-primary bg-opacity-55 text-right p-4 "
+                className="bg-primary bg-opacity-55 text-right py-5 px-4 "
                 key={item.id}
               >
-                <span className="block text-sm sm:text-lg mb-5 font-medium">
+                <span className="block text-sm sm:text-lg mb-3 font-medium">
                   {item.date}
                 </span>
-                <h2 className="text-2xl sm:text-[38px] mb-4">{item.title}</h2>
+                <h2 className="text-2xl sm:text-[36px] mb-4">{item.title}</h2>
                 <p className="text-sm  sm:text-xl ">{item.description}</p>
               </div>
             );
