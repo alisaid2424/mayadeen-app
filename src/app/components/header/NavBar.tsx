@@ -63,7 +63,7 @@ const NavBar = () => {
       </div>
 
       {/* Menu button + mobile menu*/}
-      <div className="ms-7 w-full lg:w-auto lg:hidden">
+      <div className="mx-4 sm:mx-7 w-full lg:w-auto lg:hidden">
         <button
           onClick={() => setToggle(!toggle)}
           className="p-2 hover:bg-white/20 rounded transition "

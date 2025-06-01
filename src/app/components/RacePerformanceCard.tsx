@@ -35,19 +35,15 @@ const races: RaceData[] = [
     values: [
       "11",
       "6",
-      "1:12.71",
-      "7 1/2",
-      "5",
-      "59.82",
+      "3",
+      "4",
+      "بداية",
+      "P3",
       "47.23",
       "23.29",
-      "3",
-      "3",
-      "1",
-      "2",
-      "بداية",
+      "47.23",
+      "23.29",
       "-",
-      "P3",
       "P6",
     ],
     details: {
@@ -76,19 +72,15 @@ const races: RaceData[] = [
     values: [
       "11",
       "6",
-      "1:12.71",
-      "7 1/2",
-      "5",
-      "59.82",
+      "3",
+      "4",
+      "بداية",
+      "P3",
       "47.23",
       "23.29",
-      "3",
-      "3",
-      "1",
-      "2",
-      "بداية",
+      "47.23",
+      "23.29",
       "-",
-      "P3",
       "P6",
     ],
     details: {
@@ -117,19 +109,15 @@ const races: RaceData[] = [
     values: [
       "11",
       "6",
-      "1:12.71",
-      "7 1/2",
-      "5",
-      "59.82",
+      "3",
+      "4",
+      "بداية",
+      "P3",
       "47.23",
       "23.29",
-      "3",
-      "3",
-      "1",
-      "2",
-      "بداية",
+      "47.23",
+      "23.29",
       "-",
-      "P3",
       "P6",
     ],
     details: {
@@ -171,7 +159,7 @@ const RacePerformanceCard = () => {
           <div className="text-primary font-bold whitespace-nowrap text-[34px] text-right mb-3">
             {race.daysAgo}
           </div>
-          <div className="flex justify-between items-center border rounded-md md:rounded-full flex-wrap gap-2 md:gap-5 px-10 py-5  shadow-sm bg-[#F2F2F2]">
+          <div className="flex justify-between items-center border rounded-md md:rounded-full flex-wrap gap-2 md:gap-5 px-10 py-4 shadow-sm bg-[#F2F2F2]">
             {/* Info text (3 lines) */}
             <div className="flex flex-col text-sm text-gray-600 space-y-1">
               {race.infoLines.map((line, i) => (
@@ -188,22 +176,49 @@ const RacePerformanceCard = () => {
 
             {/* Colored score circle */}
             <div
-              className={`w-[78px] h-[78px] flex items-center justify-center rounded-full text-2xl font-bold mr-2 ml-2 shrink-0 border border-gray-200 ${
+              className={`w-[60px] h-[60px] flex items-center justify-center rounded-full text-2xl font-bold mr-2 ml-2 shrink-0 border border-gray-200 ${
                 race.score === 81
                   ? "bg-[#EA3323]"
                   : race.score === 54
                   ? "bg-[#0122F5]"
                   : "bg-white"
-              } ${getColorClass(race.scoreColor)}`}
+              }${getColorClass(race.scoreColor)}`}
             >
               {race.score}
             </div>
 
-            {/* List of numbers and metrics */}
-            <div className="flex gap-2 text-sm text-center text-gray-800 flex-wrap max-w-60">
-              {race.values.map((val, i) => (
-                <div key={i}>{val}</div>
-              ))}
+            {/* Two-line metrics section with Arabic RTL support */}
+            <div className="flex flex-col gap-1 text-sm text-gray-800 max-w-60 text-center">
+              {/* First Row */}
+              <div className="flex justify-between gap-2 flex-wrap ">
+                {race.values.slice(0, 6).map((val, i, arr) => (
+                  <div
+                    key={`top-${i}`}
+                    className={`whitespace-nowrap min-w-[32px] ${
+                      i === arr.length - 1
+                        ? "bg-white rounded-full text-black p-2"
+                        : ""
+                    }`}
+                  >
+                    {val}
+                  </div>
+                ))}
+              </div>
+              {/* Second Row */}
+              <div className="flex justify-between gap-2 flex-wrap">
+                {race.values.slice(7, 12).map((val, i, arr) => (
+                  <div
+                    key={`bottom-left-${i}`}
+                    className={`whitespace-nowrap min-w-[32px] ${
+                      i === arr.length - 1
+                        ? "bg-white rounded-full text-black p-2"
+                        : ""
+                    }`}
+                  >
+                    {val}
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Jockey & odds */}
@@ -222,18 +237,18 @@ const RacePerformanceCard = () => {
                     : race.score === 54
                     ? "bg-[#0122F5]"
                     : "bg-white"
-                } ${getColorClass(race.scoreColor)} `}
+                }${getColorClass(race.scoreColor)} `}
               >
-                <div className="">
+                <div>
                   <span className="block">{race.details.age}</span>
                   <span>{race.details.type}</span>
                 </div>
-                <div className="">
+                <div>
                   <span className="block">{race.details.title}</span>
                   <span>{race.details.distance}</span>
                 </div>
 
-                <div className="">
+                <div>
                   <span className="block">{race.details.distance}</span>
                   <span>{race.details.condition}</span>
                 </div>

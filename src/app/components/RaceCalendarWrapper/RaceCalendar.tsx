@@ -3,17 +3,19 @@
 import { useState } from "react";
 import Image from "next/image";
 
-type DateItem = {
+// Types
+
+export type DateItem = {
   day: number;
   name: string;
 };
 
-type Race = {
+export type Race = {
   day: number;
   type: string | string[];
 };
 
-type SelectedRace = {
+export type SelectedRace = {
   name: string;
   classification: string;
   date: string;
@@ -25,7 +27,7 @@ type SelectedRace = {
   prize: string;
 };
 
-type RaceCalendarProps = {
+export type RaceCalendarProps = {
   dates: DateItem[];
   races: Race[];
 };
@@ -49,15 +51,11 @@ const RaceCalendar: React.FC<RaceCalendarProps> = ({ dates, races }) => {
   const visibleDates = dates.slice(startIndex, startIndex + 7);
 
   const handleNext = () => {
-    if (startIndex + 7 < dates.length) {
-      setStartIndex(startIndex + 7);
-    }
+    setStartIndex((prevIndex) => (prevIndex + 1) % dates.length);
   };
 
   const handlePrev = () => {
-    if (startIndex - 7 >= 0) {
-      setStartIndex(startIndex - 7);
-    }
+    setStartIndex((prevIndex) => (prevIndex - 1 + dates.length) % dates.length);
   };
 
   return (
@@ -85,8 +83,8 @@ const RaceCalendar: React.FC<RaceCalendarProps> = ({ dates, races }) => {
 
         {/* Calendar Navigation */}
         <div className="bg-white rounded-lg shadow-sm">
-          <div className="grid grid-cols-8" dir="rtl">
-            <div className="col-span-1 flex flex-col justify-between gap-6 pb-4 border-l border-gray-100">
+          <div className="grid grid-cols-9" dir="rtl">
+            <div className="col-span-2 flex flex-col justify-between gap-6 pb-4 border-l border-gray-100">
               <div className="text-right mt-3">
                 <div className="text-lg sm:text-[22px] font-bold text-black">
                   2024
@@ -120,11 +118,11 @@ const RaceCalendar: React.FC<RaceCalendarProps> = ({ dates, races }) => {
               </h3>
             </div>
 
-            {visibleDates.map((date) => {
+            {visibleDates.map((date, index) => {
               const raceDay = races.find((r) => r.day === date.day);
               return (
                 <div
-                  key={date.day}
+                  key={`${date.day}-${index}`}
                   className={`border-l border-gray-100 py-3 text-center ${
                     date.day === 28 ? "bg-yellow-50" : "bg-white"
                   }`}
@@ -136,7 +134,7 @@ const RaceCalendar: React.FC<RaceCalendarProps> = ({ dates, races }) => {
                   >
                     {date.day}
                   </div>
-                  <div className="text-[21px] text-primary border-b border-gray-300 pb-3">
+                  <div className="text-[21px] text-primary border-b border-gray-300 pb-3 hidden sm:block">
                     {date.name}
                   </div>
 
@@ -156,7 +154,7 @@ const RaceCalendar: React.FC<RaceCalendarProps> = ({ dates, races }) => {
                               }`}
                             >
                               {isFeatured && showDetails && (
-                                <div className="absolute z-10 p-4 bg-white border border-gray-100 rounded-lg shadow-sm text-right w-[320px] top-2 left-0">
+                                <div className="absolute z-10 p-4 bg-white border border-gray-100 rounded-lg shadow-sm text-right w-[320px] top-5 left-1/4 -translate-x-1/4">
                                   <Image
                                     src="/icons/X.svg"
                                     alt="close"
@@ -200,7 +198,7 @@ const RaceCalendar: React.FC<RaceCalendarProps> = ({ dates, races }) => {
                                         </div>
                                         <div>الجائزة: {selectedRace.prize}</div>
                                       </div>
-                                      <button className="flex items-center gap-1 bg-[#FFBF00] text-sm font-bold py-1 px-2  rounded-full text-black">
+                                      <button className="flex items-center gap-1 bg-[#FFBF00] text-sm font-bold py-1 px-2 rounded-full text-black">
                                         تفاصيل
                                         <Image
                                           src="/arrowLeftMedium.svg"

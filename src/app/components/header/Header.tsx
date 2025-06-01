@@ -24,7 +24,13 @@ const Header = () => {
 
         {/* Logo */}
 
-        <Image src="/logo.svg" alt="logo-img" width={193} height={58} />
+        <Image
+          src="/logo.svg"
+          alt="logo-img"
+          width={193}
+          height={58}
+          className="w-[100px] sm:w-[200px]"
+        />
       </div>
     </header>
   );
